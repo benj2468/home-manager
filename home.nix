@@ -88,5 +88,12 @@
       enable = true;
       clock24 = true;
     };
+
+    fish = {
+      enable = true;
+      plugins = with pkgs.fishPlugins; [
+        { name = "fishplugin-tide"; src = tide.src; }
+      ];
+    };
   };
 }
