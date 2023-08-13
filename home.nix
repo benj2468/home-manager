@@ -22,6 +22,7 @@
     # # "Hello, world!" when run.
     pkgs.hello
     pkgs.git
+    pkgs.python3
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -89,11 +90,13 @@
       clock24 = true;
     };
 
-    fish = {
+    zsh = {
       enable = true;
-      plugins = with pkgs.fishPlugins; [
-        { name = "fishplugin-tide"; src = tide.src; }
-      ];
+      oh-my-zsh = {
+        enable = true;
+        plugins = [ "git" ];
+        theme = "crunch";
+      };
     };
   };
 }
