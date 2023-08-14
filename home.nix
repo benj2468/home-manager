@@ -3,8 +3,8 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "benjcape";
-  home.homeDirectory = "/Users/benjcape";
+  home.username = "bcape";
+  home.homeDirectory = "/Users/bcape";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -22,7 +22,11 @@
     # # "Hello, world!" when run.
     pkgs.hello
     pkgs.git
-    pkgs.python3
+    (pkgs.python3.withPackages (ps: [
+      ps.black
+      ps.mypy
+    ]))
+    pkgs.nodejs
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -82,6 +86,9 @@
         vim-fugitive
         vim-gitgutter
         gruvbox
+        ctrlp-vim
+        statix
+        jedi-vim
       ];
     };
 
@@ -97,6 +104,17 @@
         plugins = [ "git" ];
         theme = "crunch";
       };
+
+      initExtra = ''
+
+        export PATH=$HOME/.nix-profile/bin:$PATH
+        export NIX_PATH=nixpkgs=$HOME/sources/anduril-nixpkgs
+        # Nix
+        if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+          . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+        fi
+        # End Nix
+      '';
     };
   };
 }
