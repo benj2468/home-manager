@@ -4,14 +4,12 @@
   ...
 }: {
   imports = [
+    ./home.nix
     ./programs/vim/default.nix
     ./programs/zsh.nix
     ./programs/tmux.nix
     ./programs/lynx.nix
   ];
-
-  home.username = "bcape";
-  home.homeDirectory = "/home/bcape";
 
   home.packages = with pkgs; [
     btop
@@ -23,9 +21,11 @@
     glow
     xsel
     python3
+    lazygit
+    nix-output-monitor
   ];
 
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.05";
 
   programs.home-manager.enable = true;
 }
