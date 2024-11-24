@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    ./home.nix
     ./programs/vim/default.nix
     ./programs/zsh.nix
     ./programs/tmux.nix
