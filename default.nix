@@ -8,6 +8,7 @@
     ./programs/zsh.nix
     ./programs/tmux.nix
     ./programs/lynx.nix
+    ./programs/direnv.nix
   ];
 
   home.packages = with pkgs; [
